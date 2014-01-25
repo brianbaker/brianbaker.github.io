@@ -14,6 +14,7 @@ define('F2/Container', [
     'F2/Events',
     'F2/Constants'
 ], function(Events, Constants) {
-    console.log(Events);
-    console.log(Constants);
+    return {
+        load: function() { }
+    }
 });
