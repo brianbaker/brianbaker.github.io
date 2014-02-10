@@ -1,2 +1,2 @@
-brianbaker.github.com
+brianbaker.github.io
 =====================
