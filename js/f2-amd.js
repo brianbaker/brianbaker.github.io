@@ -1,4 +1,5 @@
-// F2 Layer
+// F2 Layer that can be require'd first and then afterwards all of the modules within
+// will be loaded and ready to go for the App and Container to use.
 define('F2', function() {
 	define('F2/Events', [], function() { 
 		return {
