@@ -17,10 +17,13 @@ define('F2', function() {
 		'F2/Events',
 		'F2/Constants'
 	], function(Events, Constants) {
+		var _apps = {};
+		
 		return {
-			load: function(url) {
-				require([url], function(app) {
-					console.log(app);	
+			load: function(config) {
+				require([config.url], function(app) {
+					_apps[config.id] = new app();
+					_apps[config.id].init();
 				});
 			}
 		}
