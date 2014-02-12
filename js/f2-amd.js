@@ -18,7 +18,11 @@ define('F2', function() {
 		'F2/Constants'
 	], function(Events, Constants) {
 		return {
-			load: function() { }
+			load: function(url) {
+				require([url], function(app) {
+					console.log(app);	
+				});
+			}
 		}
 	});
 });
