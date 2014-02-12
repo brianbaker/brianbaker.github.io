@@ -3,12 +3,13 @@ define([
   'F2/Constants'
 ], function(Events, Constants) {
 
-  console.log(Events, Constants);
-
-  return {
-    init: function() {
-    },
-    dispose: function() {
-    }
+  return function() {
+    return {
+      init: function() {
+        console.log(Events, Constants);
+      },
+      dispose: function() {
+      }
+    };
   };
 });
