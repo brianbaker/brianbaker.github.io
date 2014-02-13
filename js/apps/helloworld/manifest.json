@@ -1,9 +1,8 @@
 {
-	scripts: [
+	"scripts": [
 		"//brianbaker.github.io/js/apps/helloworld/io_github_brianbaker_helloworld-layer.js"
 	],
-	styles: [
-	],
-	appClass: "//brianbaker.github.io/js/apps/io_github_brianbaker_helloworld.js",
-	app: "<div></div>"
+	"styles": [],
+	"appClass": "//brianbaker.github.io/js/apps/io_github_brianbaker_helloworld.js",
+	"app": "<div></div>"
 }
