@@ -27,9 +27,19 @@ define('F2', function() {
 			return url + param +'='+ id;
 		}
 		
-		function uid() {
-			_uid += 1;
-			return '__async_req_'+ _uid +'__';
+		function uid(name) {
+			var paramRegex = /!(.+)/,
+				url = name.replace(paramRegex, ''),
+				id =  ('F2_' + Math.floor(Math.random() * 1000000));
+				
+			if (paramRegex.test(name)) {
+				name = name.replace(/.+!/, '');
+				id = name.indexOf(':') < 0 ? name.split(':')[1] : id;
+			}
+			
+			return id;
+		//	_uid += 1;
+		//	return '__async_req_'+ _uid +'__';
 		}
 		
 		return{
@@ -37,7 +47,7 @@ define('F2', function() {
 				if(config.isBuild){
 					onLoad(null); //avoid errors on the optimizer
 				}else{
-					var id = uid();
+					var id = uid(name);
 					//create a global variable that stores onLoad so callback
 					//function can define new module after async load
 					window[id] = onLoad;
