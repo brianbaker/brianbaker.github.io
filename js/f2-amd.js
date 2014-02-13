@@ -77,9 +77,11 @@ define('F2', function() {
 		
 		return {
 			load: function(config) {
-				var callback = config.jsonpCallback || ('F2_' + Math.floor(Math.random() * 1000000));
+				var manifestUrl += (config.jsonpCallback)
+					? ('!callback:' + config.jsonpCallback)
+					: '';
 				
-				require(['jsonp!' + config.manifestUrl + '!' + callback], function(manifest) {
+				require(['jsonp!' + manifestUrl], function(manifest) {
 					console.log('Manifest', manifest);
 					var dependencies = [].concat(manifest.scripts);
 					dependencies.push(manifest.appClass);
