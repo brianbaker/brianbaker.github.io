@@ -85,9 +85,12 @@ define('F2', function() {
 				require(['jsonp!' + manifestUrl], function(manifest) {
 					console.log('Manifest', manifest);
 					var dependencies = [].concat(manifest.scripts);
-					dependencies.push(manifest.appClass);
 					require(dependencies, function() {
-						console.log(arguments);
+						console.log('Dependency Arguments', arguments);
+						
+						require([config.id], function(app) {
+							console.log(app);
+						});
 					});
 				});
 			}
