@@ -3,7 +3,7 @@
 define('F2', function() {
 	
 	// https://gist.github.com/millermedeiros/1255010
-	define(['//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text.js'], function(text){
+	define('f2-json', ['//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text.js'], function(text){
 	
 		var jsonParse = (typeof JSON !== 'undefined' && typeof JSON.parse === 'function')? JSON.parse : function(val){
 				return eval('('+ val +')'); //quick and dirty
