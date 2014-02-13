@@ -21,9 +21,13 @@ define('F2', function() {
 		
 		return {
 			load: function(config) {
-				require([config.url], function(app) {
-					_apps[config.id] = new app();
-					_apps[config.id].init();
+				require([config.manifestUrl], function(manifest) {
+					console.log(manifest);
+					var dependencies = [].concat(manifest.scripts);
+					dependencies.push(manifest.appClass);
+					require(dependencies, function() {
+						console.log(arguments);
+					});
 				});
 			}
 		}
