@@ -29,7 +29,7 @@ define('F2', function() {
 		return {
 			load: function(config) {
 				require(['text!' + config.manifestUrl], function(manifest) {
-					console.log(manifest);
+					console.log('Manifest', manifest);
 					var dependencies = [].concat(manifest.scripts);
 					dependencies.push(manifest.appClass);
 					require(dependencies, function() {
