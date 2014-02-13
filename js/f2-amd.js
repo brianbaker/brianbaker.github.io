@@ -1,6 +1,6 @@
 // F2 Layer that can be require'd first and then afterwards all of the modules within
 // will be loaded and ready to go for the App and Container to use.
-define('F2', ['//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text'], function() {
+define('F2', ['//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text.js'], function() {
 	define('F2/Events', [], function() { 
 		return {
 			emit: function() { }
