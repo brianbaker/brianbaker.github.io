@@ -2,37 +2,48 @@
 // will be loaded and ready to go for the App and Container to use.
 define('F2', function() {
 	
-	// https://gist.github.com/millermedeiros/1255010
-	define('json', ['//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text.js'], function(text){
-	
-		var jsonParse = (typeof JSON !== 'undefined' && typeof JSON.parse === 'function')? JSON.parse : function(val){
-				return eval('('+ val +')'); //quick and dirty
-			},
-			buildMap = {};
+	/** @license
+	 * RequireJS plugin for async dependency load like JSONP and Google Maps
+	 * Author: Miller Medeiros
+	 * Version: 0.1.1 (2011/11/17)
+	 * Released under the MIT license
+	 */
+	define('jsonp', function(){
+
+		var DEFAULT_PARAM_NAME = 'callback',
+			_uid = 0;
 		
-		//API
-		return {
+		function injectScript(src){
+			var s, t;
+			s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = src;
+			t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(s,t);
+		}
 		
-			load : function(name, req, onLoad, config) {
-				text.get(req.toUrl(name), function(data){
-					if (config.isBuild) {
-						buildMap[name] = data;
-						onLoad(data);
-					} else {
-						onLoad(jsonParse(data));
-					}
-				});
-			},
+		function formatUrl(name, id){
+			var paramRegex = /!(.+)/,
+				url = name.replace(paramRegex, ''),
+				param = (paramRegex.test(name))? name.replace(/.+!/, '') : DEFAULT_PARAM_NAME;
+			url += (url.indexOf('?') < 0)? '?' : '&';
+			return url + param +'='+ id;
+		}
 		
-			//write method based on RequireJS official text plugin by James Burke
-			//https://github.com/jrburke/requirejs/blob/master/text.js
-			write : function(pluginName, moduleName, write){
-				if(moduleName in buildMap){
-					var content = buildMap[moduleName];
-					write('define("'+ pluginName +'!'+ moduleName +'", function(){ return '+ content +';});\n');
+		function uid() {
+			_uid += 1;
+			return '__async_req_'+ _uid +'__';
+		}
+		
+		return{
+			load : function(name, req, onLoad, config){
+				if(config.isBuild){
+					onLoad(null); //avoid errors on the optimizer
+				}else{
+					var id = uid();
+					//create a global variable that stores onLoad so callback
+					//function can define new module after async load
+					window[id] = onLoad;
+					injectScript(formatUrl(name, id));
 				}
 			}
-		
 		};
 	});
 	
@@ -56,7 +67,9 @@ define('F2', function() {
 		
 		return {
 			load: function(config) {
-				require(['json!' + config.manifestUrl], function(manifest) {
+				var callback = config.jsonpCallback || ('F2_' + Math.floor(Math.random() * 1000000));
+				
+				require(['jsonp!' + config.manifestUrl + '!' + callback], function(manifest) {
 					console.log('Manifest', manifest);
 					var dependencies = [].concat(manifest.scripts);
 					dependencies.push(manifest.appClass);
