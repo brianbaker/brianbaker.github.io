@@ -34,7 +34,7 @@ define('F2', function() {
 				
 			if (paramRegex.test(name)) {
 				name = name.replace(/.+!/, '');
-				id = name.indexOf(':') < 0 ? name.split(':')[1] : id;
+				id = name.indexOf(':') < 0 ? id : name.split(':')[1];
 			}
 			
 			return id;
