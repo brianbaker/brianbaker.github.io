@@ -77,9 +77,9 @@ define('F2', function() {
 		
 		return {
 			load: function(config) {
-				var manifestUrl += (config.jsonpCallback)
+				var manifestUrl += (config.jsonpCallback
 					? ('!callback:' + config.jsonpCallback)
-					: '';
+					: '');
 				
 				require(['jsonp!' + manifestUrl], function(manifest) {
 					console.log('Manifest', manifest);
