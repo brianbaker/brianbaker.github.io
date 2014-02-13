@@ -77,7 +77,8 @@ define('F2', function() {
 		
 		return {
 			load: function(config) {
-				var manifestUrl += (config.jsonpCallback
+				var manifestUrl = config.manifestUrl;
+				manifestUrl += (config.jsonpCallback
 					? ('!callback:' + config.jsonpCallback)
 					: '');
 				
