@@ -4,7 +4,7 @@ define('F2', function() {
 	
 	require.config({
 		paths: {
-			'text': '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text.js'
+			'text': '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.10/text'
 		}	
 	});
 	
