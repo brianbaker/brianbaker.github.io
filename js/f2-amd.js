@@ -85,6 +85,7 @@ define('F2', function() {
 				require(['jsonp!' + manifestUrl], function(manifest) {
 					console.log('Manifest', manifest);
 					var dependencies = [].concat(manifest.scripts);
+					console.log('Dependencies', dependencies);
 					require(dependencies, function() {
 						console.log('Dependency Arguments', arguments);
 						
