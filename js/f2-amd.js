@@ -98,9 +98,9 @@ define('F2', function() {
 						console.log('Dependency Arguments:', arguments);
 						
 						// load the app
-						//require([config.id], function(app) {
-						//	console.log(app);
-						//});
+						require([config.id], function(app) {
+							console.log(app);
+						});
 					});
 				});
 			}
