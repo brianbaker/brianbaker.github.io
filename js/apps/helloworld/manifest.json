@@ -1,6 +1,6 @@
 F2_io_github_brianbaker_helloworld({
 	"scripts": {
-		"jquery-1.11.0.layer": "//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js",
+		"jquery-1.11.0.layer": "//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min",
 		"io_github_brianbaker_helloworld.layer": "//brianbaker.github.io/js/apps/helloworld/io_github_brianbaker_helloworld.layer"
 	},
 	"styles": [],
