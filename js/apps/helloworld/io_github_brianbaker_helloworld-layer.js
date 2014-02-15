@@ -5,12 +5,13 @@ define('io_github_brianbaker_helloworld-layer', function() {
     return jQuery.noConflict(true);
   });
   
+  console.log('a');
   define('io_github_brianbaker_helloworld', [
     'F2/Events',
     'F2/Constants',
     'jquery-1.11.0'
   ], function(Events, Constants, $) {
-  
+  console.log('b');
     return function() {
       return {
         init: function() {
@@ -21,5 +22,5 @@ define('io_github_brianbaker_helloworld-layer', function() {
       };
     };
   });
-
+  console.log('c');
 });
