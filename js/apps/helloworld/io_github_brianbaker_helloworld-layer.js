@@ -23,4 +23,6 @@ define('io_github_brianbaker_helloworld-layer', function() {
     };
   });
   console.log('c');
+  
+  return 'test';
 });
