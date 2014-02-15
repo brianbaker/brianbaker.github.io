@@ -100,6 +100,8 @@ define('F2', function() {
 						// load the app
 						require([config.id], function(app) {
 							console.log(app);
+							_apps[config.id] = new app();
+							_apps[config.id].init();
 						});
 					});
 				});
