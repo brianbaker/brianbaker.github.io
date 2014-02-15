@@ -1,13 +1,9 @@
 // layer file for io_github_brianbaker_helloworld app
 define('io_github_brianbaker_helloworld.layer', function() {
 
-  console.log('a');
-
   define('jquery-1.11.0', ['//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'], function(jQuery) {
     return jQuery.noConflict(true);
   });
-  
-  console.log('b');
   
   define('io_github_brianbaker_helloworld', [
     'F2/Events',
@@ -26,7 +22,4 @@ define('io_github_brianbaker_helloworld.layer', function() {
     };
   });
   
-  console.log('c');
-  
-  return 'test layer';
 });
