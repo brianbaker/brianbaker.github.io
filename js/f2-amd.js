@@ -86,8 +86,13 @@ define('F2', function() {
 				// grab the manifest
 				require(['jsonp!' + manifestUrl], function(manifest) {
 					
-					var dependencies = [].concat(manifest.scripts);
-					console.log('Dependencies:', dependencies);
+					require.config({paths: manifest.scripts});
+					
+					var dependencies = [];
+					for (var s in manifest.scripts) {
+						dependencies.push(s);
+					}
+					console.log(dependencies);
 					
 					// load the layers
 					require(dependencies, function() {
