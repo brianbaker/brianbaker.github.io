@@ -93,9 +93,12 @@ define('F2', function() {
 					}
 					console.log(dependencies);
 					
-					// load the layers
+					// load the amd layers
 					require(dependencies, function() {
 						console.log('Dependency Arguments:', arguments);
+						
+						// place app in the page
+						document.body.innerHTML += manifest.app;
 						
 						// load the app
 						require([config.id], function(app) {
