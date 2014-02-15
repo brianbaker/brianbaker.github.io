@@ -1,6 +1,6 @@
 F2_io_github_brianbaker_helloworld({
 	"scripts": [
-		"//brianbaker.github.io/js/apps/helloworld/io_github_brianbaker_helloworld.layer.js"
+		"//brianbaker.github.io/js/apps/helloworld/io_github_brianbaker_helloworld.js"
 	],
 	"styles": [],
 	"app": "<div></div>"
