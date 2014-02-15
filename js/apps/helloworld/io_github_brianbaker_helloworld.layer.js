@@ -1,5 +1,5 @@
 // layer file for io_github_brianbaker_helloworld app
-define('io_github_brianbaker_helloworld-layer', function() {
+define('io_github_brianbaker_helloworld.layer', function() {
 
   console.log('a');
 
