@@ -3,5 +3,5 @@ F2_io_github_brianbaker_helloworld({
 		"io_github_brianbaker_helloworld.layer": "//brianbaker.github.io/js/apps/helloworld/io_github_brianbaker_helloworld.layer"
 	},
 	"styles": [],
-	"app": "<div></div>"
+	"app": "<div><h1>Hello World!</h1></div>"
 });
