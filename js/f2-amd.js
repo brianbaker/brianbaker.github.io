@@ -71,8 +71,9 @@ define('F2', function() {
 	
 	define('F2/Container', [
 		'F2/Events',
-		'F2/Constants'
-	], function(Events, Constants) {
+		'F2/Constants',
+		'require'
+	], function(Events, Constants, require) {
 		var _apps = {};
 		
 		return {
