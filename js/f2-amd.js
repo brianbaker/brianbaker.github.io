@@ -83,16 +83,20 @@ define('F2', function() {
 					? ('!callback:' + config.jsonpCallback)
 					: '');
 				
+				// grab the manifest
 				require(['jsonp!' + manifestUrl], function(manifest) {
-					console.log('Manifest:', manifest);
+					
 					var dependencies = [].concat(manifest.scripts);
 					console.log('Dependencies:', dependencies);
-					require(dependencies, function(arg1, arg2, arg3) {
-						console.log('Dependency Arguments:', arg1, arg2, arg3);
+					
+					// load the layers
+					require(dependencies, function() {
+						console.log('Dependency Arguments:', arguments);
 						
-						require([config.id], function(app) {
-							console.log(app);
-						});
+						// load the app
+						//require([config.id], function(app) {
+						//	console.log(app);
+						//});
 					});
 				});
 			}
